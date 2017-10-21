@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import requests
 from bs4 import BeautifulSoup
+from subprocess import Popen
 
 useragent = "Mozilla/5.0 (X11; U; Linux i686; en-gb) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+) epiphany-webkit"
 url = "https://www.packtpub.com/packt/offers/free-learning"
@@ -15,5 +16,4 @@ title = rawtitle[0].text.strip()
 
 title = title.replace("#", "\#")
 
-with open("/home/penaz/.packt", "w") as p:
-    p.write(title)
+Popen(["notify-send", "Today's Free Ebook @ Packt", title])
