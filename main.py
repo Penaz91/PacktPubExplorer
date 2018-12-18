@@ -15,5 +15,8 @@ title = rawtitle[0].text.strip()
 
 title = title.replace("#", "\#")
 
+if title == "":
+    title = "No title found - Check Packt's Free Learning Page"
+
 with open("/home/penaz/.packt", "w") as p:
     p.write(title)
