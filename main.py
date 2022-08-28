@@ -2,6 +2,7 @@
 import re
 import requests
 import argparse
+from html import unescape
 from datetime import date
 from datetime import timedelta
 from subprocess import Popen
@@ -45,7 +46,7 @@ def scraper():
     url = "https://www.packtpub.com/free-learning"
     response = requests.get(url, headers={"user-agent": USERAGENT})
 
-    content = response.text
+    content = unescape(response.text)
 
     title = REGEX.search(content).groupdict().get(
         "content", "Could not scrape title, check the PacktPub Website"
